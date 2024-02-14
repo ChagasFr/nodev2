@@ -1,3 +1,6 @@
+let soma = require("./soma")
+let soma = require("./mult")
+
 let args = process.argv.slice(2);
 
 let a = number(args[1]);
@@ -10,14 +13,6 @@ if (args[0] == 's') {
     c = mult(a, b);
 } else {
     c = "opcao invalida"
-}
-
-function soma(x, y) {
-    return x + y;
-
-}
-function mult(x, y) {
-    return x * y;
 }
 
 console.log(c)
