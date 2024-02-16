@@ -1,9 +1,20 @@
 const http = require('http');
+const url = require('url');
+const fs = require('fs')
 
 // criando a solicitacao e recebendo a resposta
 http.createServer((request, response) => {
-    response.writeHead(200, { 'Content-Type': 'text/plain' })
-    response.end("Hello Word");
+    let path = url.parse(resquest.url).pathname;
+    let fileName = "." +  path;
+
+    fs.readFile(fileName, (err, data ) => {
+        if(err) {
+            response.writeHead(404, {"content-type":"text/html"});
+            response.end("pagina nao encontrada")
+        }
+    })
+    response.end()
+
 }).listen(3000, (err) => {
     if(err) {
         console.log(err)
