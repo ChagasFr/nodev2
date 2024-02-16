@@ -1,4 +1,6 @@
-const sharp = require('sharp')
+const sharp = require('sharp'); 
+const compress_iamge = require('compress-images');
+const fs = requiere('fs');
 
 let path = process.argv[2];
 let width = Number(process.argv[3]);
@@ -9,7 +11,7 @@ function resize(path, width) {
             console.log(err)
         } else {
             console.log('boa')
-            compress(outputPath, "./compressed")
+            compress(outputPath, "./compressed/")
         }
     })
 }
@@ -25,6 +27,14 @@ function compress(pathInput, outputPath) {
             console.log(completed);
             console.log(statistics);
             console.log('---------');
+
+            fs.unlink(pathInput, (err) => {
+                if(err) {
+                    console.log(err)
+                } else {
+                    console.log(pathInput, "apagado");
+                }
+            })
         });
 }
 
