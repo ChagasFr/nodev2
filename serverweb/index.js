@@ -27,6 +27,8 @@ function handleFile(req, res, callbackS) {
 function handleRequest(req, res) {
     let path = url.parse(req.url).pathname;
 
+    let method = req.method;
+
     if(path == "/teste") {
         res.end("teste");
         return true;
